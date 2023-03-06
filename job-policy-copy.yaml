@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: stackrox-policy-copy-all
+  namespace: stackrox
+spec:
+  template:
+    metadata:
+      name: stackrox-policy-copy-all-job
+    containers:
+      - name: stackrox-policy-copy-all-job
+        env:
+        - name: ROX_API_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: rox-api-token
+        - name: ROX_ENDPOINT
+          valueFrom:
+            secretKeyRef:
+              name: rox-central-address
+        # Decide b/t one of these two
+        # image: registry.redhat.io/advanced-cluster-security/rhacs-roxctl-rhel8:3.71.2
+        image: registry.access.redhat.com/ubi8/ubi:8.3-297
+        imagePullPolicy: IfNotPresent
+        script: |
+          yum install jq -y -q
+          yum install curl -y -q
+        restartPolicy: OnFailure
