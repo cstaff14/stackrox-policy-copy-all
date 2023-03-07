@@ -24,11 +24,10 @@ spec:
         # image: registry.redhat.io/advanced-cluster-security/rhacs-roxctl-rhel8:3.71.2
         image: registry.access.redhat.com/ubi8/ubi:8.3-297
         imagePullPolicy: IfNotPresent
+        restartPolicy: OnFailure
         script: |
           yum install jq -y -q
           yum install curl -y -q
 
           echo ${ROX_ENDPOINT}
           echo ${ROX_API_TOKEN}
-
-        restartPolicy: OnFailure
