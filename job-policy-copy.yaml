@@ -27,4 +27,8 @@ spec:
         script: |
           yum install jq -y -q
           yum install curl -y -q
+
+          echo ${ROX_ENDPOINT}
+          echo ${ROX_API_TOKEN}
+
         restartPolicy: OnFailure
