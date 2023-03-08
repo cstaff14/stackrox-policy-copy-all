@@ -26,6 +26,9 @@ spec:
           image: registry.access.redhat.com/ubi8/ubi:8.3-297
           imagePullPolicy: IfNotPresent
           script: |
+            #!/usr/bin/env bash
+            set+x
+
             yum install jq -y -q
             yum install curl -y -q
 
