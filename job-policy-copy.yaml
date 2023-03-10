@@ -34,4 +34,11 @@ spec:
 
             echo ${ROX_ENDPOINT}
             echo ${ROX_API_TOKEN}
+          resources:
+            cpu: 300m
+            memory: 512Mi
+          limits:
+            cpu: 300m
+            memory: 512Mi
+
       restartPolicy: OnFailure
