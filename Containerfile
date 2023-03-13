@@ -4,15 +4,15 @@ LABEL maintainer="castaffo@redhat.com"
 ARG rox-api-token
 ARG rox-central-address
 
-ENV ROX_API_TOKEN ${rox-api-token}
-ENV ROX_ENDPOINT ${rox-central-address}
+ENV ROX_API_TOKEN $rox-api-token
+ENV ROX_ENDPOINT $rox-central-address
 
 RUN yum install jq -y && \
     yum install curl -y && \
     yum install git -y && \
     yum clean all
 
-RUN groupadd -r rox-user && useradd -r -g student rox-user
+RUN groupadd -r rox-user && useradd -r -g rox-user student
 
 USER rox-user
 
