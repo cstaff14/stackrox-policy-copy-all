@@ -12,7 +12,7 @@ RUN yum install jq -y && \
     yum install git -y && \
     yum clean all
 
-RUN groupadd -r rox-user && useradd -r -g rox-user student
+RUN groupadd -r rox-user && useradd -r -g rox-user rox-user
 
 USER rox-user
 
