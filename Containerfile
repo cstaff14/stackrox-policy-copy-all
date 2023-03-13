@@ -9,17 +9,14 @@ ENV ROX_ENDPOINT $rox-central-address
 
 RUN yum install jq -y && \
     yum install curl -y && \
-    yum install git -y && \
     yum clean all
 
 RUN groupadd -r rox-user && useradd -r -g rox-user rox-user
 
+COPY --chown=rox-user:rox-user policy-copy-all.sh /home/rox-user
+
 USER rox-user
 
 WORKDIR /home/rox-user
-
-RUN git clone https://github.com/stackrox/contributions.git
-
-WORKDIR /home/rox-user/contributions/util-scripts/policy-copy-all
 
 CMD ["./policy-copy-all.sh"]
