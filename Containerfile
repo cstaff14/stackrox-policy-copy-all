@@ -13,7 +13,7 @@ RUN yum install jq -y && \
 
 RUN groupadd -r rox-user && useradd -r -g rox-user rox-user
 
-COPY --chown=rox-user:rox-user policy-copy-all.sh /home/rox-user
+COPY --chown=rox-user:rox-user policy-copy-all.sh /home/rox-user/policy-copy-all.sh
 
 USER rox-user
 
