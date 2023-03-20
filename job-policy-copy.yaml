@@ -4,6 +4,8 @@ metadata:
   name: stackrox-policy-copy-all
   namespace: stackrox
 spec:
+  parallelism: 1
+  completions: 1
   template:
     metadata:
       name: stackrox-policy-copy-all-job
